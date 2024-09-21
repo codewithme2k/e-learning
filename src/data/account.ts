@@ -7,6 +7,7 @@ export const getAccountByUserId = async (userId: string) => {
     });
 
     return account;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return null;
   }

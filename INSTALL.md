@@ -11,3 +11,13 @@ npx shadcn@latest add button avatar badge card dialog dropdown-menu form input l
 npm install @prisma/client
 npx prisma migrate dev --name init
 npx prisma generate npx prisma db push
+
+npm i bcryptjs
+npm install --save-dev @types/bcryptjs
+
+npm i uuid
+npm install --save-dev @types/uuid
+
+npm i resend
+
+npm i bcrypt

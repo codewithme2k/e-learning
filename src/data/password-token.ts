@@ -7,6 +7,7 @@ export const getPasswordResetTokenByToken = async (token: string) => {
     });
 
     return passwordResetToken;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return null;
   }
@@ -19,7 +20,7 @@ export const getPasswordResetTokenByEmail = async (email: string) => {
     });
 
     return passwordResetToken;
-  } catch (error) {
+  } catch {
     return null;
   }
 };

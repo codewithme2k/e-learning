@@ -1,6 +1,6 @@
-import NextAuth, { type DefaultSession } from "next-auth";
+import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { UserRole } from "@prisma/client";
+import { EUserRole } from "@prisma/client";
 
 import { getUserById } from "@/data/user";
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
@@ -32,7 +32,7 @@ export const {
       // Allow OAuth without email verification
       if (account?.provider !== "credentials") return true;
 
-      const existingUser = await getUserById(user.id);
+      const existingUser = await getUserById(user.id || "");
 
       // Prevent sign in without email verification
       if (!existingUser?.emailVerified) return false;
@@ -58,13 +58,13 @@ export const {
       }
 
       if (token.role && session.user) {
-        session.user.role = token.role as UserRole;
+        session.user.role = token.role as EUserRole;
       }
 
       if (session.user) {
         session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
         session.user.name = token.name;
-        session.user.email = token.email;
+        session.user.email = token.email || "";
         session.user.isOAuth = token.isOAuth as boolean;
       }
 
